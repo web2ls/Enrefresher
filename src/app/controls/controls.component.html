@@ -1,0 +1,19 @@
+<div class="card">
+  <div
+    (click)="toggleContent()" 
+    class="card-header text-center bg-secondary text-white text-uppercase">
+    Controls
+  </div>
+  <div *ngIf="isShowContent" class="card-body">
+    <div>
+      <input (change)="toggleList($event)" id="show-learned-words" type="checkbox">
+      <label for="show-learned-words">Show learned words</label>
+    </div>
+    <div>
+      <div>
+        <input (change)="toggleExam($event)" id="enable-test-mode" type="checkbox">
+        <label for="enable-test-mode">Enable exam mode</label>
+      </div>
+    </div>
+  </div>
+</div>

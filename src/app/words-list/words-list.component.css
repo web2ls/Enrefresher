@@ -1,0 +1,15 @@
+@media screen and (max-width: 768px) {
+  .words-list {
+    margin-bottom: 40px;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .sidebar .card {
+    margin-bottom: 0;
+  }
+}

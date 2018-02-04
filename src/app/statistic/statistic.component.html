@@ -1,0 +1,11 @@
+<div class="card">
+  <div 
+    (click)="toggleContent()"
+    class="card-header text-center bg-secondary text-white text-uppercase">
+    Statistic
+  </div>
+  <div *ngIf="isShowContent" class="card-body">
+    <p>Words in proccess: {{ totalWordsInProccess$ | async }}</p>
+    <p>Learned words: {{ totalLearnedWords$ | async }}</p>
+  </div>
+</div>

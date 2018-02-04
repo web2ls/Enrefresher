@@ -1,0 +1,65 @@
+.card {
+  margin-bottom: 20px;
+}
+
+.card-header {
+  cursor: pointer;
+}
+
+input[type="checkbox"]:not(checked) {
+  position: absolute;
+  opacity: 0;
+}
+
+input[type="checkbox"]:not(checked) + label {
+  position: relative;
+  padding: 0 0 0 40px;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:not(selected) + label:before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 30px;
+  height: 16px;
+  border-radius: 8px;
+  background: #6c757d;
+  box-shadow: inset 0 2px 3px rgba(0,0,0,.2);
+  cursor: pointer;
+}
+
+input[type="checkbox"]:not(selected) + label:after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 4px;
+  width: 11px;
+  height: 11px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,.3);
+  transition: all .2s;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label:before {
+  background: #17a2b8;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label:after {
+  left: 16px;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:focus + label:before {
+  box-shadow: 0 0 0 1px rgba(255,255,255,.5);
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    margin-bottom: 0;
+  }
+}

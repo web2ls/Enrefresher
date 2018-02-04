@@ -1,0 +1,19 @@
+<nav class="sticky-top navbar navbar-dark bg-dark text-info">
+  <div class="container">
+    <div>
+      <i class="fa fa-bookmark" aria-hidden="true"></i>
+      <a class="navbar-brand" routerLink="/">EN <sub>refresher</sub></a>
+    </div>
+    <div>
+      <div ngbDropdown class="nav-item dropdown">
+        <div *ngIf="currentUser | async as user; else loginHeader" ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ user.email }}
+        </div>
+        <ng-template #loginHeader>Not logged in</ng-template>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <div *ngIf="currentUser" (click)="logout()" class="dropdown-item">Logout</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

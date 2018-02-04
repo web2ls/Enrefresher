@@ -1,0 +1,9 @@
+.card-header {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,19 @@
+<h2>Learned words</h2>
+<ul class="list-group">
+  <li *ngFor="let word of words$ | async" class="list-group-item">
+    <div class="row">
+      <div class="col-5">
+        {{ word.originalWord }}
+      </div>
+      <div class="col-5">
+        {{word.translatedWord | translatedArray}}
+      </div>
+      <div class="words-control col-2 text-right">
+        <i 
+          class="fa fa-graduation-cap text-info"
+          (click)="moveWordToProcess(word)"
+          aria-hidden="true"></i>
+      </div>
+    </div>
+  </li>
+</ul>

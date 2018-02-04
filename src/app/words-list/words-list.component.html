@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="words-list col-md-8 col-12 order-md-1 order-2">
+      <div *ngIf="!isExamModeActive; else examModeTemplate">
+        <div *ngIf="isWordsListActive; else learnedWordsTemplate">
+            <words-in-proccess></words-in-proccess>
+        </div>
+        <ng-template #learnedWordsTemplate>
+          <learned-words></learned-words>
+        </ng-template>
+      </div>
+      <ng-template #examModeTemplate>
+        <exam></exam> 
+      </ng-template>
+    </div>
+    <div class="sidebar col-md-4 col-12 order-md-2 order-1">
+      <new-word-form></new-word-form>
+      <controls 
+        (toggleExamMode)="onToggleExamMode($event)"
+        (toggleWordsList)="onToggleWordsList($event)"></controls>
+      <statistic></statistic>
+    </div>
+  </div>
+</div>

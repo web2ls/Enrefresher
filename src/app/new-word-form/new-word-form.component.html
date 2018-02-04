@@ -1,0 +1,53 @@
+<div class="card">
+    <div
+      (click)="toggleContent()" 
+      class="card-header text-center bg-secondary text-white text-uppercase">
+      Add new word
+    </div>
+    <div *ngIf="isShowContent" class="card-body">
+      <form #f="ngForm" (ngSubmit)="addWord(f.value, $event)">
+        <div class="form-group">
+          <label for="new-original-word">Original word</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            ngModel
+            #originalWord="ngModel"
+            name="originalWord"
+            id="new-original-word" 
+            autocomplete="off"
+            required />
+          <div 
+            *ngIf="originalWord.touched && originalWord.invalid" 
+            class="alert alert-danger">
+            <div *ngIf="originalWord.errors.required">
+              This field is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="new-translated-word">Translated word</label>
+          <input
+            type="text" 
+            class="form-control" 
+            ngModel
+            #translatedWord="ngModel"
+            name="translatedWord"
+            id="new-translated-word" 
+            autocomplete="off"
+            required />
+          <div 
+            *ngIf="translatedWord.touched && translatedWord.invalid" 
+            class="alert alert-danger">
+            <div *ngIf="translatedWord.errors.required">This field is required</div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button 
+            type="submit"
+            [disabled]="f.invalid" 
+            class="btn btn-primary bg-secondary text-white">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>

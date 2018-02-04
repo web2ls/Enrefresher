@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="offset-md-4 col-md-4">
+    <div class="card">
+      <div class="card-header text-center">
+        Authentication
+      </div>
+      <div class="card-body text-center">
+        <form #f="ngForm" (ngSubmit)="login(f.value)">
+          <div class="form-group">
+            <label for="mail">Username</label>
+            <input
+              name="username"
+              #username="ngModel"
+              ngModel 
+              class="form-control" id="mail"
+              type="mail"
+              email 
+              required />
+
+            <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+              <div *ngIf="username.errors.required">This field is required</div>
+              <div *ngIf="username.errors.email">Please enter your correct email address</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              ngModel
+              name="password"
+              #password="ngModel"
+              class="form-control" 
+              id="password" 
+              type="password"
+              required />
+            
+            <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+              <div *ngIf="password.errors.required">This field is required</div>
+            </div>
+          </div>
+          <button [disabled]="f.invalid" class="btn btn-primary">Login</button>
+        </form>
+
+        <div *ngIf="authError" class="alert alert-danger">{{ authErrorMessage }}</div>
+      </div>
+    </div>
+  </div>
+</div>

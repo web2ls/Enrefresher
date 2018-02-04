@@ -3,6 +3,8 @@ import { WordService } from '../services/word.service';
 import { Observable } from 'rxjs/Observable';
 import { Word } from '../models/word';
 import { LearnedWordService } from '../services/learned-word.service';
+import * as firebase from 'firebase';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'words-in-proccess',
@@ -11,13 +13,17 @@ import { LearnedWordService } from '../services/learned-word.service';
 })
 export class WordsInProccessComponent implements OnInit {
   words$: Observable<any[]>;
+  currentUser: firebase.User;
 
   constructor(
     private learnedWordService: LearnedWordService,
-    private wordService: WordService) { }
+    private auth: AuthService,
+    private wordService: WordService) {
+      this.currentUser = this.auth.currentUser;
+  }
 
   ngOnInit() {
-    this.words$ = this.wordService.getAll();
+    this.words$ = this.wordService.getAll(this.currentUser.uid);
   }
 
   deleteWord(wordId: string) {
@@ -26,6 +32,7 @@ export class WordsInProccessComponent implements OnInit {
 
   moveToLearned(word: Word) {
     this.learnedWordService.addLearnedWord({
+      userId: this.currentUser.uid,
       originalWord: word.originalWord,
       translatedWord: word.translatedWord
     });

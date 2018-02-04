@@ -8,36 +8,24 @@ import 'rxjs/add/operator/map';
 export class LearnedWordService {
 
   constructor(
-    private db: AngularFireDatabase) { 
-
-    }
+    private db: AngularFireDatabase) {}
 
   addLearnedWord(word) {
     this.db.list('/learnedWords').push(word);
   }  
 
-  // moveToLearned(word) {
-  //   this.addLearnedWord(word);
-  //   this.wordService.deleteWord(word.key);
-  // }
-
-  // moveWordToProcess(word) {
-  //   this.wordService.addWord({ originalWord: word.originalWord, translatedWord: word.translatedWord });
-  //   this.deleteLearnedWord(word.key);
-  // }
-
-  totalLearnedWords() {
-    return this.db.list('/learnedWords')
-      .valueChanges()
-      .map(words => words.length);
+  totalLearnedWords(userId: string) {
+    return this.db.list('/learnedWords', ref => ref.orderByChild('userId').equalTo(userId))
+    .valueChanges()
+    .map(words => words.length);
   }
 
-  getAll() {
-    return this.db.list('/learnedWords')
-      .snapshotChanges()
-      .map(changes => {
-        return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-      })
+  getAll(userId: string) {
+    return this.db.list('/learnedWords', ref => ref.orderByChild('userId').equalTo(userId))
+    .snapshotChanges()
+    .map(changes => {
+      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    })
   }
 
   deleteLearnedWord(wordId: string) {

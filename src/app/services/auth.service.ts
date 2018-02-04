@@ -4,8 +4,12 @@ import * as firebase from 'firebase';
 
 @Injectable()
 export class AuthService {
+  currentUser: firebase.User;
 
   constructor(private auth: AngularFireAuth) { 
+    this.auth.authState.subscribe(user => {
+      if (user) this.currentUser = user;
+    })
   }
 
   login(creds) {
@@ -21,8 +25,8 @@ export class AuthService {
     return this.auth.auth.signOut();
   }
 
-  test() {
-    return this.auth.auth.currentUser;
+  getCurrentUserId() {
+    return this.auth.auth.currentUser.uid;
   }
 
 }

@@ -10,7 +10,7 @@ import 'rxjs/add/operator/take';
 })
 export class ExamComponent implements OnInit {
   words: Word[] = [];
-  examWord = {};
+  examWord: Word;
   index: number;
   prevIndex: number;
 

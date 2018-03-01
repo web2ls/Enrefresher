@@ -32,7 +32,7 @@ export class WordsInProccessComponent implements OnInit {
 
   moveToLearned(word: Word) {
     this.learnedWordService.addLearnedWord({
-      userId: this.currentUser.uid,
+      userId: word.userId,
       originalWord: word.originalWord,
       translatedWord: word.translatedWord
     });

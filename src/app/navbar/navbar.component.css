@@ -9,3 +9,9 @@ nav i {
 .nav-link {
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .nav-link {
+    padding: 0;
+  }
+}

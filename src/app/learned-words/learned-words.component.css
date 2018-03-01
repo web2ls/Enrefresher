@@ -1,3 +1,7 @@
 i {
   cursor: pointer;
 }
+
+.search-input {
+  margin-bottom: 20px;
+}

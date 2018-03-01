@@ -24,6 +24,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from './services/auth.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './services/auth-guard.service';
+import { SpacebarDirective } from './directive/spacebar.directive';
+import { KeyEventService } from './services/key-event.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { AuthGuard } from './services/auth-guard.service';
     LearnedWordsComponent,
     ExamComponent,
     TranslatedArrayPipe,
-    LoginComponent
+    LoginComponent,
+    SpacebarDirective,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +59,10 @@ import { AuthGuard } from './services/auth-guard.service';
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: '**',
+        component: NotFoundComponent
       }
     ])
   ],
@@ -63,7 +72,8 @@ import { AuthGuard } from './services/auth-guard.service';
     AuthService, 
     AngularFireDatabase,
     AngularFireAuth,
-    AuthGuard
+    AuthGuard,
+    KeyEventService
   ],
   bootstrap: [AppComponent]
 })

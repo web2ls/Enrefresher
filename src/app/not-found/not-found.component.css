@@ -1,0 +1,46 @@
+.not-found__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  text-align: center;
+  background: url('/assets/img/404.jpeg') no-repeat;
+  background-size: cover;
+  z-index: 0;
+}
+
+.black-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(0, 0, 0, .7);
+  z-index: 1;
+}
+
+.not-found__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%) translateY(-50%);
+  color: #fff;
+  z-index: 2;
+}
+
+.not-found__header {
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.not-found__header span {
+  color: #17a2b8;
+}
+
+.not-found__descr {
+  font-size: 14px;
+}

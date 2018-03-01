@@ -1,6 +1,17 @@
 <h2>Learned words</h2>
+
+<div class="search-input form-inline text-center">
+  <input 
+    type="text" 
+    #searchInput
+    class="form-control"
+    [(ngModel)]="searchValue"
+    (keyup)="searchWords(searchInput.value)"
+    placeholder="Search...">
+</div>
+
 <ul class="list-group">
-  <li *ngFor="let word of words$ | async" class="list-group-item">
+  <li *ngFor="let word of filteredWords" class="list-group-item">
     <div class="row">
       <div class="col-5">
         {{ word.originalWord }}

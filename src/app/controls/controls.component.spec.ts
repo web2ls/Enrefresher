@@ -1,25 +1,32 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ControlsComponent } from './controls.component';
+import { Component } from '@angular/core';
+import { EventEmitter } from 'protractor';
 
 describe('ControlsComponent', () => {
   let component: ControlsComponent;
-  let fixture: ComponentFixture<ControlsComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ControlsComponent ]
-    })
-    .compileComponents();
-  }));
+  let toggleWordsList: EventEmitter;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ControlsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new ControlsComponent();  
+    toggleWordsList = new EventEmitter();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  xit('When value <= 768 then shoul be return false', () => {
+    spyOn(window, 'innerWidth').and.returnValue(500);
+
+    component.ngOnInit();
+    
+    expect(component.isShowContent).toBeFalsy();
   });
-});
+
+  it('Return true if checkbox checked', () => {
+    let event = {
+      target: {
+        checked: true
+      }
+    };
+    component.toggleList(event);
+    
+    expect(component.toggleWordsList).toBeTruthy();
+  })
+})

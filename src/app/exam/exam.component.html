@@ -5,10 +5,21 @@
   <div class="card-body">
     <div class="form-group">
       <label>Original word</label>
-      <input *ngIf="examWord" class="form-control" type="text" [value]="examWord.originalWord">
+      <input 
+        *ngIf="examWord" 
+        class="form-control" 
+        type="text" 
+        tabindex="1"
+        readonly
+        #nextWordInput
+        [value]="examWord.originalWord">
     </div>
     <div class="text-right">
-      <button (click)="getRandomWord()" class="btn btn-primary">Go to the next</button>
+      <button
+        #nextWordBtn
+        tabindex="0" 
+        (click)="getRandomWord()" 
+        class="btn btn-primary">Go to the next</button>
     </div>
   </div>
 </div>
